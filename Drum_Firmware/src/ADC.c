@@ -12,10 +12,10 @@ void InitADC(void)
 	
 	ADMUX |= _BV(ADLAR); // Left adjust ADC
 	
+	DIDR0 |= _BV(ADC0D); //disabling digital input for pin A0
 	DIDR0 |= _BV(ADC1D); //disabling digital input for pin A1
 	DIDR0 |= _BV(ADC2D); //disabling digital input for pin A2
 	DIDR0 |= _BV(ADC3D); //disabling digital input for pin A3
-	DIDR0 |= _BV(ADC4D); //disabling digital input for pin A4
 	
 	ADCSRA |= _BV(ADEN);//enable ADC
 	PRR &= ~(_BV(PRADC)); // Disable the power reduction ADC bit
