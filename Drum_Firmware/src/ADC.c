@@ -18,3 +18,16 @@ void InitADC(void)
 	ADCSRA |= _BV(ADEN);//enable ADC
 	PRR &= ~(_BV(PRADC)); // Disable the power reduction ADC bit
 }
+
+void ChannelOne(void)
+{
+	ADMUX |= _BV(REFS0); // 3.3v refrece voltage
+	ADMUX &= ~ (_BV(REFS1)); // negate REFS1 or else it's left high
+	
+	ADMUX &= 0b11110000; //clear the pin selection
+	ADMUX |= _BV(MUX0); // a1 is input
+	
+	ADCSRA |= _BV(ADSC); // start conversion, use this when ADC is in free running mode to start conversion
+	//otherwise it is triggered by something
+	
+}
