@@ -10,6 +10,7 @@
 #define ADC_H_
 
 void InitADC(void);
+void ChannelZero(void);
 
 
 
